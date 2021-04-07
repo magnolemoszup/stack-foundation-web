@@ -1,3 +1,3 @@
 import React from "react";
 
-export const ThemeContext = React.createContext("tomato");
+export const ThemeContext = React.createContext("white");

@@ -23,14 +23,14 @@ const init = async () => {
           return [
             {
               id: uuidv4(),
-              name: "MFE - Orange Foundation",
+              name: "Load MFE - Orange Foundation",
               "url": "http://localhost:3002/remoteEntry.js",
               "scope": "foundation",
               "module": "./App",
             },
             {
               id: uuidv4(),
-              name: "MFE - Orange Foundation Button",
+              name: "Load Widget - Orange Foundation Button",
               "url": "http://localhost:3002/remoteEntry.js",
               "scope": "foundation",
               "module": "./Button",

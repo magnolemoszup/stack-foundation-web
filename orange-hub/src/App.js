@@ -3,7 +3,7 @@ import { ThemeContext } from "context/ThemeContext";
 
 import './styles.scss'
 
-const colors = ['tomato', 'papayawhip', 'orange', 'pink']
+const colors = ['white', 'tomato', 'papayawhip', 'orange', 'pink']
 
 function loadComponent(scope, module) {
   return async () => {
@@ -102,6 +102,17 @@ const App = () => {
   return (
     <main>
       <h1>Orange Hub!</h1>
+      {
+        remotes.map(remote => ( 
+        <button key={remote.id} onClick={() => setSystem(remote)}>{remote.name}</button>
+        ))
+      }
+        <div style={{ marginTop: "2em", border: '2px dotted #aeaeae' }}>
+          <ThemeContext.Provider value={theme}>
+              <System system={system} />
+          </ThemeContext.Provider>
+        </div>
+
       <ul className="containerThemes">
         {colors.map(item => (
           <li
@@ -112,18 +123,6 @@ const App = () => {
           />
         ))}
       </ul>
-
-      {
-        remotes.map(remote => ( 
-        <button key={remote.id} onClick={() => setSystem(remote)}>{remote.name}</button>
-        ))
-      }
-
-      <div style={{ marginTop: "2em" }}>
-        <ThemeContext.Provider value={theme}>
-          <System system={system} />
-        </ThemeContext.Provider>
-      </div>
     </main>
   );
 }

@@ -7,7 +7,7 @@ const Button = () => {
   const color = useContext(ThemeContext);
 
   return (
-    <ThemeContext.Provider value="tomato">
+    <ThemeContext.Provider value="white">
       <button style={{backgroundColor: `${color}`}}>
         Button - Orange Foundation
       </button>
