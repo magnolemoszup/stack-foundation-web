@@ -1,8 +1,11 @@
 import React from 'react'
 
 const Button = () => {
+
   return (
-    <button>Button - Orange Foundation</button>
+      <button>
+        Button - Orange Foundation
+      </button>
   );
 }
 

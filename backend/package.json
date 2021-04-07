@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/hapi": "^20.1.1"
+    "@hapi/hapi": "^20.1.1",
+    "uuid": "^8.3.2"
   }
 }
