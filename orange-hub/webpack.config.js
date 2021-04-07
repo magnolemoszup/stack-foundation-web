@@ -41,7 +41,8 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "orange-hub",
-      shared: { 
+      exposes: {},
+      shared: {
         "react": { singleton: true },
         "react-dom": { singleton: true }
       },
