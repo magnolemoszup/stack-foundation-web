@@ -1,16 +1,35 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
+const { ModuleFederationPlugin } = require("webpack").container;
 
+const deps = require("./package.json").dependencies;
 module.exports = {
   entry: {
     app: path.join(__dirname, 'src', 'index.js')
   },
-  mode: "development",
+  cache: false,
+
+  mode: "none",
+  devtool: "source-map",
+
+  optimization: {
+    minimize: false,
+  },
+
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3001,
+    port: 8005,
   },
+
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+
+  resolve: {
+    extensions: [".jsx", ".js", ".tsx", ".json"],
+  },
+
   module: {
     rules: [
       {
@@ -34,24 +53,29 @@ module.exports = {
       },
     ],
   },
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+
   plugins: [
     new ModuleFederationPlugin({
-      name: "orange-hub",
-      exposes: {},
-      remotes: {
-        context: "context@http://localhost:8005/remoteEntry.js",
+      name: "context",
+      filename: "remoteEntry.js",
+      remotes: {},
+      exposes: {
+        "./ThemeContext": "./src/ThemeContextProvider",
       },
       shared: {
-        "react": { singleton: true },
-        "react-dom": { singleton: true }
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
       },
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html')
-    })
-  ]
+    }),
+  ],
 };

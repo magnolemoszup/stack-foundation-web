@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
+import { ThemeContext } from "context/ThemeContext";
+
+import './styles.scss'
+
+const colors = ['tomato', 'papayawhip', 'orange', 'pink']
 
 function loadComponent(scope, module) {
   return async () => {
-    // Initializes the share scope. This fills it with known provided modules from this build and all remotes
     await __webpack_init_sharing__("default");
-
-    const container = window[scope]; // or get the container somewhere else
-    // Initialize the container, it may provide shared modules
+    const container = window[scope]; 
     await container.init(__webpack_share_scopes__.default);
     const factory = await window[scope].get(module);
     const Module = factory();
@@ -86,9 +88,10 @@ function System(props) {
 }
 
 const App = () => {
-
   const [remotes, setRemotes] = useState([]);
   const [system, setSystem] = useState(undefined);
+
+  const [theme, setTheme] = useState()
 
   useEffect(async () => {
     await fetch('http://localhost:3000')
@@ -98,14 +101,28 @@ const App = () => {
 
   return (
     <main>
-      <p>Orange Hub!</p>
+      <h1>Orange Hub!</h1>
+      <ul className="containerThemes">
+        {colors.map(item => (
+          <li
+          key={item}
+          className="boxColor"
+          style={{backgroundColor: `${item}`}}
+          onClick={() => setTheme(item)}
+          />
+        ))}
+      </ul>
+
       {
-        remotes.map(remote => { 
-          return <button key={remote.scope + remote.module} onClick={() => setSystem(remote)}>{remote.id}</button>
-        })
+        remotes.map(remote => ( 
+        <button key={remote.id} onClick={() => setSystem(remote)}>{remote.name}</button>
+        ))
       }
+
       <div style={{ marginTop: "2em" }}>
-        <System system={system} />
+        <ThemeContext.Provider value={theme}>
+          <System system={system} />
+        </ThemeContext.Provider>
       </div>
     </main>
   );

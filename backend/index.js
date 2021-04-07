@@ -1,6 +1,7 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
+const { v4: uuidv4 } = require('uuid');
 
 const init = async () => {
 
@@ -21,15 +22,19 @@ const init = async () => {
         handler: (request, h) => {
           return [
             {
+              id: uuidv4(),
+              name: "MFE - Orange Foundation",
               "url": "http://localhost:3002/remoteEntry.js",
               "scope": "foundation",
               "module": "./App",
             },
             {
+              id: uuidv4(),
+              name: "MFE - Orange Foundation Button",
               "url": "http://localhost:3002/remoteEntry.js",
               "scope": "foundation",
               "module": "./Button",
-            },
+            }
           ]
         }
     });
