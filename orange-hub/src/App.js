@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { ThemeContext } from "context/ThemeContext";
 
 import './styles.scss'
 
@@ -90,6 +91,8 @@ const App = () => {
   const [remotes, setRemotes] = useState([]);
   const [system, setSystem] = useState(undefined);
 
+  const [theme, setTheme] = useState()
+
   useEffect(async () => {
     await fetch('http://localhost:3000')
       .then((res) => res.json())
@@ -99,13 +102,27 @@ const App = () => {
   return (
     <main>
       <h1>Orange Hub!</h1>
+      <ul className="containerThemes">
+        {colors.map(item => (
+          <li
+          key={item}
+          className="boxColor"
+          style={{backgroundColor: `${item}`}}
+          onClick={() => setTheme(item)}
+          />
+        ))}
+      </ul>
+
       {
         remotes.map(remote => ( 
         <button key={remote.id} onClick={() => setSystem(remote)}>{remote.name}</button>
         ))
       }
+
       <div style={{ marginTop: "2em" }}>
-        <System system={system} />
+        <ThemeContext.Provider value={theme}>
+          <System system={system} />
+        </ThemeContext.Provider>
       </div>
     </main>
   );
