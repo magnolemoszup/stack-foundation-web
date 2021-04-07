@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { ThemeContext } from "context/ThemeContext";
 
 const Button = () => {
 
+  const color = useContext(ThemeContext);
+
   return (
-      <button>
+    <ThemeContext.Provider value="tomato">
+      <button style={{backgroundColor: `${color}`}}>
         Button - Orange Foundation
       </button>
+    </ThemeContext.Provider>
   );
 }
 

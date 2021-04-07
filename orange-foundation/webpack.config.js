@@ -46,6 +46,9 @@ module.exports = {
         "./App": "./src/App",
         "./Button": "./src/Button",
       },
+      remotes: {
+        context: "context@http://localhost:8005/remoteEntry.js",
+      },
       shared: {
         "react": { singleton: true },
         "react-dom": { singleton: true }
