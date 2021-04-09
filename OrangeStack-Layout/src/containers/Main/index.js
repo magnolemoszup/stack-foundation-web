@@ -1,16 +1,21 @@
 import React from "react";
-import { Main } from './styled';
+import Nav from './Nav'
+import { Content, Main, Header, Avatar, Section } from './styled';
 
 export default () => {
   return (
     <Main>
-      <h1>Webpack Module Federation Boilerplate!</h1>
-      <nav>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </nav>
+      <Nav />
+      <Content>
+        <Header>
+          <Avatar>
+            <p>Bem vindo Alfred!</p>
+          </Avatar>
+        </Header>
+        <Section>
+          <h1>Webpack Module Federation Boilerplate!</h1>
+        </Section>
+      </Content>
     </Main>
   )
 }

@@ -4,15 +4,15 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    font-family: 'Jost';
+    font-family: 'Montserrat';
     box-sizing: border-box;
   }
   body {
     background-color: #ffffff;
     margin: 0;
-    font-family: 'Jost';
+    font-family: 'Montserrat';
     font-weight: normal;
-    font-size: 62.5%;
+    font-size: 10px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,7 +29,6 @@ export const GlobalStyle = createGlobalStyle`
     color: #1A2138;
     font-size: 1.2rem;
     font-weight: normal;
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
   }
 
 
