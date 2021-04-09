@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Montserrat';
     font-weight: normal;
-    font-size: 10px;
+    font-size: 62.5%;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2 {
     font-size: 1.8rem;
     margin-top: 0;
+    margin-bottom: 1.6rem;
   }
 
   p, span {

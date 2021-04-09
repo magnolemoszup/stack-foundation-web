@@ -1,31 +1,35 @@
 import styled from 'styled-components'
 
-export const Main = styled.main`
-  width: 100%;
+export const MainStyled = styled.main`
   height: 100vh;
+  width: 100%;
 `
-export const Content = styled.div`
+export const Container = styled.div`
+  height: 100%;
+  left: 72px;
+  overflow-y: auto;
+  padding: 0 20px;
   position: absolute;
   width: calc(100% - 72px);
-  height: 100vh;
-  left: 72px;
-  padding: 0 20px;
 `
 
-export const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
+export const HeaderStyled = styled.header`
   align-items: center;
-  width: 100%;
+  background-color: #ffffff;
+  display: flex;
   height: 72px;
+  justify-content: space-between;
   margin-bottom: 20px;
+  position: fixed;
+  width: 100%;
 `
 export const Avatar = styled.div`
-  margin-left: auto;
+  position: absolute;
+  right: 112px;
 
   p {
-    font-size: 1rem;
     color: #404659;
+    font-size: 1rem;
     font-weight: bold;
   }
 `
@@ -33,30 +37,32 @@ export const Avatar = styled.div`
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
+  margin-top: 92px;
 `
 
 export const NavStyled = styled.nav`
-  display: flex;
-  width: 72px;
-  height: 100vh;
   background-color: #F5F6F7;
-  position: absolute;
+  display: flex;
+  height: 100vh;
   left: 0;
+  position: absolute;
+  width: 72px;
 
   ul {
     list-style: none;
 
     li {
-      display: flex;
-      justify-content: center;
       align-items: center;
-      width: 72px;
-      height: 72px;
       background-color: #404659;
-      margin-bottom: 24px;
       border-left: 4px solid #404659;
       cursor: pointer;
+      display: flex;
+      height: 72px;
+      justify-content: center;
+      margin-bottom: 24px;
       transition: all 0.2s ease-out;
+      width: 72px;
+
     }
 
     li:not(:first-child) {
@@ -65,6 +71,10 @@ export const NavStyled = styled.nav`
 
       &:hover {
         background-color: #404659;
+
+        svg > path {
+          stroke: #FFFFFF;
+        }
       }
     }
   }
