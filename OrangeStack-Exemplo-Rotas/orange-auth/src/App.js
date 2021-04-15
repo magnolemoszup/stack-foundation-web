@@ -7,7 +7,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 
 export default ({ history, onSignIn }) => {
-  return(
+  return (
     <StylesProvider>
       <Router history={history}>
         <Switch>

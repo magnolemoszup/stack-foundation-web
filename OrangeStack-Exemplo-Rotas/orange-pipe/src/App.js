@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Pipe from './components/Pipe';
 
 export default ({ history }) => {
-  return(
+  return (
     <Router history={history}>
       <Switch>
         <Route exact path="/pipe" component={Pipe}></Route>
