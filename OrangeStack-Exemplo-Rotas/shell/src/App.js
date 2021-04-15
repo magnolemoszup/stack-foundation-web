@@ -4,16 +4,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Nav from './components/Nav';
 
-import { Container, MainStyled, Section } from './components/styled';
+import { Container, Section } from './components/styled';
 
 const OrangeAuthAppLazy = lazy(() => import('./components/OrangeAuthApp'));
 const OrangePipeAppLazy = lazy(() => import('./components/OrangePipeApp'));
 
 export default () => {
   const [isSignedIn, setIsSignedIn] =  useState(false);
+  
   return (
     <BrowserRouter>
-      <>
         <Nav />
         <Container>
           <Header  onSignOut={() => setIsSignedIn(false)} isSignedIn={isSignedIn} />
@@ -28,7 +28,6 @@ export default () => {
             </Suspense>
           </Section>
         </Container>
-      </>
     </BrowserRouter>
   );
 }
