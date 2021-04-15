@@ -19,11 +19,11 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     port: 8081,
+    historyApiFallback: true,
   },
 
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'http://localhost:8081/'
   },
 
   resolve: {
